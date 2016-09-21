@@ -1,0 +1,35 @@
+<ion-view title="Détail pour le {{ details.label }}m" id="bandDetailPage" class=" " >
+    <ion-content padding="true" class="has-header">
+        <!-- <p>Selected sub-band : {{ details.label }}m</p> -->
+
+        <p>Frequencies : </p>
+
+        <table cellpadding="5">
+            <tr ng-repeat="freq in details.frequencies">
+                <td style="background-color:{{ freq.mode.background }}">&nbsp;</td>
+                <td>De {{ freq.start }} à {{ freq.end }} kHz</td>
+                <td>{{ freq.mode.label }}</td>
+            </tr>
+        </table>
+
+
+
+        <ul>
+        	<li ng-repeat="freq in details.frequencies">from {{ freq.start }} to {{ freq.end }} kHz - {{ freq.mode.label }}</li>
+        </ul>
+        <p ng-if="details.psk31 !== null">PSK31 : {{ details.psk31 }} kHz</p>
+
+        <p>QRP Frequencies :</p>
+        <ul>
+        	<li ng-repeat="qrp in details.qrp">{{ qrp.frequency }} - {{ qrp.mode.label }}</li>
+        </ul>
+
+        <p>Emergency Frequencies :</p>
+        <ul>
+        	<li ng-repeat="emergency in details.emergency">{{ emergency.frequency }} kHz - {{ emergency.organization.label }}</li>
+        </ul>
+
+        <div ng-if="details.remarks !== null" >Remarques : <p ng-bind-html="details.remarks"></p>
+        </div>
+    </ion-content>
+</ion-view>
